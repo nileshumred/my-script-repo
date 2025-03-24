@@ -5,6 +5,15 @@ on:
     branches:
       - main  # This will trigger the workflow on push to the main branch
   workflow_dispatch:  # This allows manual triggering with parameters via the GitHub UI
+    inputs:
+      param1:
+        description: 'First Parameter'
+        required: true
+        default: 'default_value1'  # Optional default value for param1
+      param2:
+        description: 'Second Parameter'
+        required: false
+        default: 'default_value2'  # Optional default value for param2
 
 jobs:
   run-script:
