@@ -1,0 +1,26 @@
+name: Run Script with Parameters
+
+on:
+  push:
+    branches:
+      - main  # This will trigger the workflow on push to the main branch
+  workflow_dispatch:  # This allows manual triggering with parameters via the GitHub UI
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest  # The runner environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the repository code
+
+      - name: Set up script execution
+        run: |
+          # Get the parameters passed from the GitHub UI or the push event
+          param1="${{ github.event.inputs.param1 || 'default_value1' }}"
+          param2="${{ github.event.inputs.param2 || 'default_value2' }}"
+
+          echo "Running script with parameters: $param1, $param2"
+
+          # Run your script with the parameters
+          ./my-script.sh "$param1" "$param2"
