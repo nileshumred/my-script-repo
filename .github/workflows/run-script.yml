@@ -26,8 +26,8 @@ jobs:
       - name: Set up script execution
         run: |
           # Get the parameters passed from the GitHub UI or the push event
-          param1="${{ github.event.inputs.param1 || 'default_value1' }}"
-          param2="${{ github.event.inputs.param2 || 'default_value2' }}"
+          param1="${{ github.event.inputs.param1  }}"
+          param2="${{ github.event.inputs.param2  }}"
 
           echo "Running script with parameters: $param1, $param2"
 
